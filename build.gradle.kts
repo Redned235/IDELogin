@@ -4,4 +4,4 @@ plugins {
 }
 
 group = "me.redned.idelogin"
-version = "1.0-SNAPSHOT"
+version = project.findProperty("version") as String? ?: "1.0.0"
