@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "me.redned.idelogin.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "MainMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,26 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 21
+        uses: actions/setup-java@v2
+        with:
+          java-version: '21'
+          distribution: 'adopt'
+          cache: gradle
+      - name: Build with Gradle
+        run: ./gradlew remapJar
+      - name: Publish to Modrinth
+        if: ${{ success() && github.repository == 'Redned235/IDELogin' && github.ref_name == 'main' }}
+        env:
+          CHANGELOG: ${{ github.event.head_commit.message }}
+          BUILD_NUMBER: ${{ github.run_number }}
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+        run: ./gradlew modrinth

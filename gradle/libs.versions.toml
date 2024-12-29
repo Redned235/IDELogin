@@ -1,0 +1,37 @@
+[versions]
+mixin = "0.8.5"
+indra = "3.1.3"
+minecraft-auth = "4.1.1"
+shadow = "8.3.0"
+architectury-plugin = "3.4.159"
+architectury-loom = "1.7.412"
+minotaur = "2.8.7"
+
+# Fabric
+fabric-loader = "0.16.3"
+fabric-api = "0.103.0+1.21.1"
+
+# NeoForge
+neoforge-version = "21.0.167"
+
+# Forge
+forge-version = "1.21-51.0.33"
+
+[libraries]
+mixin = { group = "org.spongepowered", name = "mixin", version.ref = "mixin" }
+indra = { group = "net.kyori", name  = "indra-common", version.ref = "indra" }
+minecraft-auth = { group = "net.raphimc" , name = "MinecraftAuth", version.ref = "minecraft-auth" }
+shadow = { group = "com.gradleup.shadow", name = "shadow-gradle-plugin", version.ref = "shadow" }
+architectury-plugin = { group = "architectury-plugin", name = "architectury-plugin.gradle.plugin", version.ref = "architectury-plugin" }
+architectury-loom = { group = "dev.architectury.loom", name = "dev.architectury.loom.gradle.plugin", version.ref = "architectury-loom" }
+minotaur = { group = "com.modrinth.minotaur", name = "Minotaur", version.ref = "minotaur" }
+
+# Fabric
+fabric-loader = { group = "net.fabricmc", name = "fabric-loader", version.ref = "fabric-loader" }
+fabric-api = { group = "net.fabricmc.fabric-api", name = "fabric-api", version.ref = "fabric-api" }
+
+# NeoForge
+neoforge = { group = "net.neoforged", name = "neoforge", version.ref = "neoforge-version" }
+
+# Forge
+forge = { group = "net.minecraftforge", name = "forge", version.ref = "forge-version" }

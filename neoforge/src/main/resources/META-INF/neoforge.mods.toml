@@ -1,0 +1,24 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="MIT"
+[[mods]]
+modId="idelogin"
+version="${version}"
+displayName="IDELogin"
+logoFile="idelogin.png"
+authors="Redned"
+description='''${description}'''
+[[mixins]]
+config = "idelogin.mixins.json"
+[[dependencies.idelogin]]
+modId="neoforge"
+type="required"
+versionRange="[21,)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.idelogin]]
+modId="minecraft"
+type="required"
+versionRange="[1.20,)"
+ordering="NONE"
+side="BOTH"
