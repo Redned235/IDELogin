@@ -10,6 +10,12 @@ architectury {
     forge()
 }
 
+loom {
+    forge {
+        mixinConfig("idelogin.mixins.json")
+    }
+}
+
 val common: Configuration by configurations.creating
 // Without this, the mixin config isn't read properly with the runServer forge task
 val developmentForge: Configuration = configurations.getByName("developmentForge")

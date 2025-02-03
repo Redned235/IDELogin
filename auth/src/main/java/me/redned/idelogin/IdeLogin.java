@@ -20,11 +20,12 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
 public final class IdeLogin {
     private static final ILogger LOGGER = MinecraftAuth.LOGGER;
 
-    public static CompletableFuture<AuthResult> login(boolean saveToken, @Nullable Credentials credentials) {
+    public static CompletableFuture<AuthResult> login(boolean saveToken, @Nullable Credentials credentials, Executor executor) {
         HttpClient httpClient = MinecraftAuth.createHttpClient();
         AbstractStep<?, StepFullJavaSession.FullJavaSession> loginStep;
         if (credentials != null) {
@@ -90,10 +91,10 @@ public final class IdeLogin {
             }
 
             return session;
-        });
+        }, executor);
 
 
-        return sessionFuture.thenApply(session -> {
+        return sessionFuture.thenApplyAsync(session -> {
             String accessToken = session.getMcProfile().getMcToken().getAccessToken();
             String[] split = accessToken.split("\\.");
             byte[] jsonBytes = Base64.getUrlDecoder().decode(split[1]);
@@ -105,7 +106,7 @@ public final class IdeLogin {
                     json.get("xuid").getAsString(),
                     accessToken
             );
-        });
+        }, executor);
     }
 
     public static String[] removeArgs(String[] args, List<String> argNames) {

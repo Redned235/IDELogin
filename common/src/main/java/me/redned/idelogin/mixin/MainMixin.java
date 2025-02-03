@@ -6,6 +6,7 @@ import joptsimple.OptionSpec;
 import me.redned.idelogin.AuthResult;
 import me.redned.idelogin.Credentials;
 import me.redned.idelogin.IdeLogin;
+import net.minecraft.Util;
 import net.minecraft.client.main.Main;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -34,7 +35,7 @@ public class MainMixin {
         String email = optionSet.valueOf(emailSpec);
         String password = optionSet.valueOf(passwordSpec);
 
-        CompletableFuture<AuthResult> loginFuture = IdeLogin.login(saveToken, (email == null || password == null) ? null : new Credentials(email, password));
+        CompletableFuture<AuthResult> loginFuture = IdeLogin.login(saveToken, (email == null || password == null) ? null : new Credentials(email, password), Util.backgroundExecutor());
         try {
             AuthResult result = loginFuture.join();
             List<String> newArgs = new ArrayList<>(List.of(IdeLogin.removeArgs(args, List.of("--username", "--uuid", "--xuid", "--accessToken", "--userType", "--email", "--password"))));

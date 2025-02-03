@@ -12,13 +12,13 @@ description='''${description}'''
 config = "idelogin.mixins.json"
 [[dependencies.idelogin]]
 modId="forge"
-type="required"
-versionRange="[51,)"
+mandatory=true
+versionRange="[46,)"
 ordering="NONE"
 side="BOTH"
 [[dependencies.idelogin]]
 modId="minecraft"
-type="required"
+mandatory=true
 versionRange="[1.20,)"
 ordering="NONE"
 side="BOTH"
